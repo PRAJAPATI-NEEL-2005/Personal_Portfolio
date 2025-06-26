@@ -2,7 +2,28 @@
 const navMenu = document.getElementById("nav-menu"),
   navToggle = document.getElementById("nav-toggle"),
   navClose = document.getElementById("nav-close");
+/* custom cursor */
+  const cursor = document.querySelector('.custom-cursor');
 
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = `${e.clientX}px`;
+  cursor.style.top = `${e.clientY}px`;
+});
+
+document.addEventListener('mouseover', (e) => {
+  const tag = e.target.tagName.toLowerCase();
+  const isInteractive =
+    ['a', 'button', 'input', 'textarea', 'select', 'label'].includes(tag) ||
+    e.target.onclick;
+
+  if (isInteractive) {
+    cursor.classList.add('hovering');
+  }
+});
+
+document.addEventListener('mouseout', (e) => {
+  cursor.classList.remove('hovering');
+});
 /*===== MENU SHOW =====*/
 /* Validate if constant exists */
 if (navToggle) {
